@@ -6,6 +6,7 @@
 <body>
 <?php
 require('config.php');
+<<<<<<< HEAD
 if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 <<<<<<< Updated upstream
 
@@ -18,6 +19,9 @@ if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 
 =======
 >>>>>>> Stashed changes
+=======
+if (isset($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['mdp'])){
+>>>>>>> parent of f339188 (Update register.php)
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 	$username = stripslashes($_POST['pseudo']);
 	$username = mysqli_real_escape_string($conn, $username); 
@@ -40,17 +44,15 @@ if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
     }/* YEEEEEEEEEEET */
 }else{
 ?>
-	<div class="box">
-		<h1 class="box-logo box-title">Bienvenue</a></h1>
-		<h2 class="box-title">S'inscrire</h2>
-		<form action="" method="post">
-			<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur" required />
-			<input type="text" class="box-input" name="email" placeholder="Email" required />
-			<input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
-			<input type="submit" name="submit" value="S'inscrire" class="box-button" />
-			<p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
-		</form>
-	</div>
+<form class="box" action="" method="post">
+	<h1 class="box-logo box-title">Bienvenue</a></h1>
+    <h2 class="box-title">S'inscrire</h2>
+	<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur" required />
+    <input type="text" class="box-input" name="email" placeholder="Email" required />
+    <input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
+    <input type="submit" name="submit" value="S'inscrire" class="box-button" />
+    <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
+</form>
 <?php } ?>
 </body>
 </html>
