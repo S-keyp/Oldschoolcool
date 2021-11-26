@@ -37,7 +37,7 @@ if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
              <h3>Vous êtes inscrit avec succès.</h3>
              <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
 			 </div>";
-    }
+    }/* YEEEEEEEEEEET */
 }else{
 ?>
 	<div class="box">
