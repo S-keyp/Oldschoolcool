@@ -6,10 +6,7 @@
 <body>
 <?php
 require('config.php');
-<<<<<<< HEAD
 if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
-<<<<<<< Updated upstream
-
 	$email= $_POST['email'];
 	$username= $_POST['$username'];
 	$password= $_POST['password'];
@@ -17,16 +14,14 @@ if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 	$request -> execute(['username' => $username, 'email' => $email, 'password' => $password]);
 
 
-=======
->>>>>>> Stashed changes
-=======
+
 if (isset($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['mdp'])){
->>>>>>> parent of f339188 (Update register.php)
+
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 	$username = stripslashes($_POST['pseudo']);
 	$username = mysqli_real_escape_string($conn, $username); 
 	// récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-	$email = stripslashes($_POST'email']);
+	$email = stripslashes($_POST['email']);
 	$email = mysqli_real_escape_string($conn, $email);
 	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
 	$password = stripslashes($_POST['mdp']);
