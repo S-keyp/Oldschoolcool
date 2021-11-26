@@ -1,49 +1,38 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="rename.css" />
+<link rel="stylesheet" href="./projet-php/rename.css" />
 </head>
 <body>
 <?php
 require('config.php');
 
-if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
+if (isset($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 
+	$nom= $_POST['nom'];
+	$prenom= $_POST['prenom'];	
+	$pseudo= $_POST['pseudo'];
 	$email= $_POST['email'];
-	$username= $_POST['$username'];
-	$password= $_POST['password'];
-	$request = $conn -> prepare("INSERT into `membres` (pseudo, email, mdp) VALUES (:username, :email, :password)");
-	$request -> execute(['username' => $username, 'email' => $email, 'password' => $password]);
+	$mdp= $_POST['mdp'];
+	$date_abo= date('%d,%m,%y');
+	$request = $dbh -> prepare("INSERT into `utilisateurs` (nom, prénom, pseudo, email, mdp, date_abo) VALUES (:nom, :prenom, :pseudo, :email, :mdp, :date_abo)");
+	$request -> execute(['nom'=>$nom,'prenom'=>$prenom, 'pseudo' => $pseudo, 'email' => $email, 'mdp' => $mdp, 'date_abo'=>$date_abo]);
+	if($request){
+		echo "<div class='sucess'>
+				<h3>Vous êtes inscrit avec succès.</h3>
+				<p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
+				</div>";
+		}
+	}
+	else{
 
-
-
-if (isset($_POST['pseudo'], $_REQUEST['email'], $_REQUEST['mdp'])){
-	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-	$username = stripslashes($_POST['pseudo']);
-	$username = mysqli_real_escape_string($conn, $username); 
-	// récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-	$email = stripslashes($_POST'email']);
-	$email = mysqli_real_escape_string($conn, $email);
-	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-	$password = stripslashes($_POST['mdp']);
-	$password = mysqli_real_escape_string($conn, $password);
-	//requéte SQL + mot de passe crypté
-    $query = "INSERT into `users` (pseudo, email, mdp)
-              VALUES ('$username', '$email', '$password')";
-	// Exécute la requête sur la base de données
-    $res = mysqli_query($conn, $query);
-    if($res){
-       echo "<div class='sucess'>
-             <h3>Vous êtes inscrit avec succès.</h3>
-             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
-			 </div>";
-    }/* YEEEEEEEEEEET */
-}else{
 ?>
 <form class="box" action="" method="post">
 	<h1 class="box-logo box-title">Bienvenue</a></h1>
     <h2 class="box-title">S'inscrire</h2>
-	<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur" required />
+	<input type="text" class="box-input" name="nom" placeholder="Nom" required />
+	<input type="text" class="box-input" name="prenom" placeholder="Prénom" required />
+	<input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required />
     <input type="text" class="box-input" name="email" placeholder="Email" required />
     <input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
     <input type="submit" name="submit" value="S'inscrire" class="box-button" />

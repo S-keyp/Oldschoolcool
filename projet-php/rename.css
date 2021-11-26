@@ -61,11 +61,11 @@ h1.box-title {
 }
 .sucess{
 	text-align: center;
-	color: white;
+	color: black;
 }
 .sucess a {
 	text-decoration: none;
-	color: #58aef7;
+	color: black;
 }
 p.errorMessage {
     background-color: #e66262;
