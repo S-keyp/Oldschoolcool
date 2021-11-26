@@ -6,22 +6,23 @@
 <body>
 <?php
 require('config.php');
+
 if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
+
 	$email= $_POST['email'];
 	$username= $_POST['$username'];
 	$password= $_POST['password'];
-	$request = $conn -> prepare("INSERT into `users` (pseudo, email, mdp) VALUES (:username, :email, :password)");
+	$request = $conn -> prepare("INSERT into `membres` (pseudo, email, mdp) VALUES (:username, :email, :password)");
 	$request -> execute(['username' => $username, 'email' => $email, 'password' => $password]);
 
 
 
-if (isset($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['mdp'])){
-
+if (isset($_POST['pseudo'], $_REQUEST['email'], $_REQUEST['mdp'])){
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 	$username = stripslashes($_POST['pseudo']);
 	$username = mysqli_real_escape_string($conn, $username); 
 	// récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-	$email = stripslashes($_POST['email']);
+	$email = stripslashes($_POST'email']);
 	$email = mysqli_real_escape_string($conn, $email);
 	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
 	$password = stripslashes($_POST['mdp']);
