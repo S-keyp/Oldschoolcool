@@ -7,6 +7,7 @@
 <?php
 require('config.php');
 if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
+<<<<<<< Updated upstream
 
 	$email= $_POST['email'];
 	$username= $_POST['$username'];
@@ -15,14 +16,16 @@ if (isset($_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 	$request -> execute(['username' => $username, 'email' => $email, 'password' => $password]);
 
 
+=======
+>>>>>>> Stashed changes
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-	$username = stripslashes($_REQUEST['pseudo']);
+	$username = stripslashes($_POST['pseudo']);
 	$username = mysqli_real_escape_string($conn, $username); 
 	// récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-	$email = stripslashes($_REQUEST['email']);
+	$email = stripslashes($_POST'email']);
 	$email = mysqli_real_escape_string($conn, $email);
 	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-	$password = stripslashes($_REQUEST['mdp']);
+	$password = stripslashes($_POST['mdp']);
 	$password = mysqli_real_escape_string($conn, $password);
 	//requéte SQL + mot de passe crypté
     $query = "INSERT into `users` (pseudo, email, mdp)
