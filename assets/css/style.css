@@ -1,3 +1,8 @@
+/* RESET AND IMPORT */
+@font-face {
+    font-family: School;
+    src: url(/assets/fonts/school_college/School\ &\ COLLEGE\ Regular.ttf);
+}
 *{
     padding: 0;
     margin: 0;
@@ -8,15 +13,20 @@ html{
     scroll-behavior: smooth;
 }
 
-body {
-/*     overflow: hidden;
- */    height: 100vh;
-    width: 100vw;
-    background-color: #eee;
+a{
+    text-decoration: none;
+    color: inherit;
 }
 
+/* COVER */
+.cover{
+    height: auto;
+    position: absolute;
+    transform: translateY(-5rem);
+    z-index: 105;
+}
 
-.container-left, .container-right{
+#container-left, #container-right{
     background-color: #000;
     padding: 0;
     height: 100vh;
@@ -25,7 +35,7 @@ body {
 }
 
 .btn-cover {
-    z-index: 15;
+    z-index: 105;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,6 +43,195 @@ body {
     color: #fff;
     width: 80px;
     background-color: #ccc;
-    box-shadow:  0 0 20px rgba(255, 255, 255, 0.8);
+    transition: all 750ms;
+}
 
+.btn-cover:hover {
+    box-shadow:  0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes opening-left {
+    0%{
+        transform: translateX(0);
+        box-shadow: 500px 0 500px rgba(0, 0, 0, 0.938);
+    }
+    99%{
+        transform: translateX(-99%);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.938);
+    }
+}
+
+@keyframes opening-right {
+    0%{
+        transform: translateX(0%);
+        box-shadow: -500px 0 500px rgba(0, 0, 0, 0.938);
+    }
+    99%{
+        transform: translateX(100%);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.938);
+    }
+}
+
+/* HEADER */
+header.container-fluid {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+header img#logo {
+    height: 50px;
+}
+.navbar-item.nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.btn:not(#open), .card{
+    border-radius: 50px;
+}
+
+.btn:not(#open){
+    color: #fff;
+}
+
+.modal-content .modal-footer a, .modal-content .modal-footer a:hover {
+    color: #fff;
+}
+
+#myNavbar{
+    margin-top: 4px;
+    justify-content: center;
+    background-color: #fff;
+}
+
+/* MAIN */
+body {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* TITLE */
+.title-div, .results{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    background-color: #cccc;
+}
+
+h2{
+    position: relative;
+    font-size: 3rem;
+    color: #cccc;
+    -webkit-text-stroke: 3px black;
+    text-transform: uppercase;
+}
+
+h2::before{
+    content: attr(data-text);
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1%;
+    height: 100%;
+    color: #000;
+    -webkit-text-stroke: 3px black;
+    border-right: 2px solid black;
+    overflow: hidden;
+    animation: animate-h2 5000ms ease infinite;
+}
+
+@keyframes animate-h2 {
+    0%{
+        width: 0%;
+    }
+    50%{
+        width: 100%;
+    }
+    0%{
+        width: 0%;
+    }
+    
+}
+
+
+/* CANVAS */
+canvas {
+    background-color: #eee;
+    height: 65%;
+    width: 75%;
+    margin: 0.2rem 0;
+}
+
+/* RESULTS */
+.results{
+    justify-content: center;
+    align-items: center;
+} 
+
+.results div {
+    padding: 0.5em;
+}
+
+.results p:not(span) {
+    margin: 0;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+}
+
+.results span{
+    padding: 0.5rem;
+    font-size: 2.5rem;
+    border: 1px solid black;
+    font-family: School;
+}
+
+.results span:nth-child(1){
+    color: red;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+}
+
+.results div:nth-child(2) span{
+    color: blue;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+}
+
+/* PAGE FORMULAIRE INSCRPTION */
+.form-card {
+    width: 60%;
+    background-color: #eee;
+    padding: 2rem;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.form-card h3{
+    font-size: 2.5rem;
+}
+
+.form-card div {
+    margin-top: 2rem;
+}
+
+.form-card div:nth-child(3) input {
+    margin-left: 50px;
 }
