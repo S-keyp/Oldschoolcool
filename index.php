@@ -84,34 +84,26 @@
     </div>
 
     <main>
-        
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
             Launch demo modal
         </button>
-        <?php require "projet-php\login.php"; ?> -->
+        <?php require "projet-php/login.php"; ?>
         <div class="title-div">
             <h2 data-text="DYNAMICTITLE">
                 DYNAMICTITLE
             </h2>
         </div>
+
         <canvas>
 
         </canvas>
 
         <div class="results container-fluid row">
             <div class="col-12 col-md-6 text-end">
-                <p>J1 : <span id="results-J1">03</span></p>
+                <p>Pseudo J1 : <input type="text" name="pseudo-J1">Score J1:<span id="results-J1">03</span></p>
             </div>
             <div class="col-12 col-md-6">
-                <p><span id="results-J2">01</span> : J2</p>
-            </div>
-        </div>
-        <div class="results container-fluid row">
-            <div class="col-12 col-md-6 text-end">
-                <p>Pseudo J1: <input type="text" name="pseudo-J1"></p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p><input type="text" name="pseudo-J2"> :Pseudo J2</p>
+                <p><span id="results-J2">01</span> : Score J2<input type="text" name="pseudo-J2"> :Pseudo J2</p>
             </div>
         </div>
     </main>
