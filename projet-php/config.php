@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données MySQL 
 $dbh = new PDO('mysql:host=localhost;dbname=projet;charset=utf8',
 'root', '', array(PDO::ATTR_PERSISTENT=>true));
 
