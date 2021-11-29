@@ -7,8 +7,12 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/f12c8faf79.js" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
+
+
 <body>
     <header class="container-fluid">
         <div class="navbar navbar-expand-md row">
@@ -27,7 +31,7 @@
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
                     <li class="navbar-item nav-link">
-                        <a href="inscription.html">Créer un compte</a>
+                        <a href="inscription.php">Créer un compte</a>
                     </li>
                     <li class="navbar-item nav-link">
                         <div class="card">
@@ -37,32 +41,9 @@
                                         data-bs-toggle="modal">
                                     Se connecter
                                 </button>
-                                <div class="modal fade" id="Modal"
-                                    tabindex="-1" aria-labelledby="ModalLabel"
-                                    data-bs-backdrop="false"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Connection</h5>
-                                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="" method="post">
-                                                <div class="modal-body">
-                                                
-                                                    Identifiant:    <input type="text" name="email" id=""> <br>
-                                                    Mot de passe:    <input type="password" name="password" id="">
-                                                
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-                                                    <button class="btn btn-primary"><a href="inscription.html">Créer un compte</a></button>
-                                                    <input class="btn btn-info" type="submit" value="Se connecter"><!-- plus besoin? <button class="btn btn-info"></button> -->
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                                    require('projet-php/login.php');
+                                ?>
                             </div>
                         </div>
                     </li>
@@ -75,24 +56,23 @@
     </header>
 
     <main>
+
         <div class="form-card">
             <h3>Formulaire d'inscription</h3>
-            <form action="" method="post" class="row">
+            <form action="projet-php/register.php" method="post" class="row">
                 <div class="col-6 text-center">                    
                     <p>Nom :</p> 
                     <p>Prénom :</p> 
                     <p>Pseudo :</p> 
                     <p>Mail :</p> 
                     <p>Mot de passe :</p> 
-                    <p>Confirmer le mot de passe :</p> 
                 </div>
                 <div class="col-6">                    
-                        <p><input type="text" name="nom"></p>
-                        <p><input type="text" name="npreom"></p>
-                        <p><input type="text" name="pseudo"></p>
-                        <p><input type="text" name="email"></p>
-                        <p><input type="password" name="mdp"></p>
-                        <p><input type="password" name="mdp"></p>
+                    <p><input type="text" class="box-input" name="nom" placeholder="Nom" required /></p>
+	                <p><input type="text" class="box-input" name="prenom" placeholder="Prénom" required /></p>
+	                <p><input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required /></p>
+                    <p><input type="text" class="box-input" name="email" placeholder="Email" required /></p>
+                    <p><input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required /></p>
                 </div>
                 <!-- <p>Nom : <input type="text" name="nom"> Prénom : <input type="text" name="prenom"></p>
                 <p>Pseudo : <input type="text" name="pseudo"></p>
@@ -100,7 +80,8 @@
                 <p>Mot de passe : <input type="password" name="mdp"></p>
                 <p>Confirmer le mot de passe : <input type="password" name="mdp"></p> -->
                 <div class="col-12 text-end">
-                    <a class="btn btn-primary" href="index.html">Revenir au menu</a><input class="btn btn-info" type="submit" value="Envoyer">
+                    <a class="btn btn-primary" href="index.php">Revenir au menu</a>
+                    <input class="btn btn-info" type="submit" value="S'inscrire">
                 </div>
             </form>
         </div>

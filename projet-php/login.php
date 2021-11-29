@@ -1,8 +1,8 @@
-﻿<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+﻿<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -14,13 +14,16 @@
 
 				$pseudo= $_POST['pseudo'];
 				$mdp= $_POST['mdp'];
-				$request = $dbh -> prepare("SELECT pseudo, mdp FROM utilisateurs WHERE pseudo= :pseudo and mdp= :mdp");
+				$request = $dbh -> prepare("SELECT nom, pseudo, mdp FROM utilisateurs WHERE pseudo= :pseudo and mdp= :mdp");
 				if(!$request -> execute(['pseudo' => $pseudo,
 									'mdp' => $mdp])){
-						print '<h2 class="error">Nom d\'utilisateur ou Mot de passe invalide</h2>';
+						print '<h3 class="error">Nom d\'utilisateur ou Mot de passe invalide</h3>';
 					} 
 					else {
-						header('location:index.html');
+						$row= $request->fetch();
+						$_SESSION['nom'] = $row['nom'];
+						header('location:../index2.php');
+					
 					}
 				
 
@@ -28,20 +31,18 @@
 			}
 			?>
 				<form class="box" action="projet-php/login.php" method="post" name="login">
-						<h1 class="box-logo box-title">Bienvenue</a></h1>
-						<h2 class="box-title">Connexion</h2>
-							<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur">
+							<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur"><br/>
 							<input type="password" class="box-input" name="mdp" placeholder="Mot de passe">
-							<input type="submit" value="Connexion " name="submit" class="box-button">
-							<p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
+							<p class="box-register">Vous êtes nouveau ici? <a href="inscription.php">S'inscrire</a></p>
 					<?php if (! empty($message)) { ?>
 						<p class="errorMessage"><?php echo $message; ?></p>
 					<?php } ?>
-				</form>
+				
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Connexion</button>
+		</form>
       </div>
     </div>
   </div>

@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./projet-php/rename.css" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+<script src="https://kit.fontawesome.com/f12c8faf79.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <?php
@@ -14,30 +16,19 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['email'], $_
 	$pseudo= $_POST['pseudo'];
 	$email= $_POST['email'];
 	$mdp= $_POST['mdp'];
-	$date_abo= date('%d,%m,%y');
+	$date_abo= date('Y-m-d');
 	$request = $dbh -> prepare("INSERT into `utilisateurs` (nom, prénom, pseudo, email, mdp, date_abo) VALUES (:nom, :prenom, :pseudo, :email, :mdp, :date_abo)");
 	$request -> execute(['nom'=>$nom,'prenom'=>$prenom, 'pseudo' => $pseudo, 'email' => $email, 'mdp' => $mdp, 'date_abo'=>$date_abo]);
+		
 	if($request){
-		echo "<div class='sucess'>
-				<h3>Vous êtes inscrit avec succès.</h3>
-				<p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
-				</div>";
-		}
+			echo 	"<div class='form-card'>
+					<h3>Vous êtes inscrit avec succès.</h3>
+					<i class='far fa-check-circle' style='color:green; height:450px; width:450px; justify-content:center;'></i>
+					<h4>Cliquez ici pour revenir à <a href='../index.php'> la page prioncipale. </a></h4>
+					</div>";
 	}
-	else{
-
+}
+ 
 ?>
-<form class="box" action="" method="post">
-	<h1 class="box-logo box-title">Bienvenue</a></h1>
-    <h2 class="box-title">S'inscrire</h2>
-	<input type="text" class="box-input" name="nom" placeholder="Nom" required />
-	<input type="text" class="box-input" name="prenom" placeholder="Prénom" required />
-	<input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required />
-    <input type="text" class="box-input" name="email" placeholder="Email" required />
-    <input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
-    <input type="submit" name="submit" value="S'inscrire" class="box-button" />
-    <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
-</form>
-<?php } ?>
 </body>
 </html>
