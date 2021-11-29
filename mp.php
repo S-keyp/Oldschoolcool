@@ -1,25 +1,3 @@
-morpion.class.php
-Qui a accès
-L
-Propriétés système
-Type
-PHP
-Taille
-12 Ko
-Espace de stockage utilisé
-12 Ko
-Emplacement
-tp3
-Propriétaire
-Laurent Jouanno
-Date de modification
-11 mars 2021 par Laurent Jouanno
-Ouvert
-09:44 par moi
-Date de création
-17 nov. 2021
-Pas de description
-Téléchargement autorisé pour les lecteurs
 <?php
 /*
    Class Morpion
