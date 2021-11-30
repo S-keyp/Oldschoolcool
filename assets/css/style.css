@@ -127,16 +127,6 @@ main {
     width: 100vw;
 }
 
-/* BUTTON BOARD */
-.button-board{
-    position: absolute;
-    left: 10px;
-    top:30%;
-    border: 1px solid black;
-    height: 250px;
-    padding: 10px;
-}
-
 /* TITLE */
 .title-div, .results{
     display: flex;
@@ -185,11 +175,10 @@ h2::before{
 
 
 /* CANVAS */
-
-#main-canvas .container {
+canvas {
     background-color: #eee;
-    height: 65vh;
-    width: 75vw;
+    height: 65%;
+    width: 75%;
     margin: 0.2rem 0;
 }
 
