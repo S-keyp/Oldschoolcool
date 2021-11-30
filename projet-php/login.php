@@ -14,7 +14,7 @@
 
 				$pseudo= $_POST['pseudo'];
 				$mdp= $_POST['mdp'];
-				$request = $dbh -> prepare("SELECT nom, pseudo, mdp FROM utilisateurs WHERE pseudo= :pseudo and mdp= :mdp");
+				$request = $dbh -> prepare("SELECT id_utilisateurs, nom, pseudo, mdp FROM utilisateurs WHERE pseudo= :pseudo and mdp= :mdp");
 				if(!$request -> execute(['pseudo' => $pseudo,
 									'mdp' => $mdp])){
 						print '<h3 class="error">Nom d\'utilisateur ou Mot de passe invalide</h3>';
@@ -22,6 +22,7 @@
 					else {
 						$row= $request->fetch();
 						$_SESSION['nom'] = $row['nom'];
+						$_SESSION['id'] = $row['id_utilisateurs'];
 						header('location:../index2.php');
 					
 					}

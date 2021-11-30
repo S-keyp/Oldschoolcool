@@ -30,7 +30,7 @@
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
                     <li class="navbar-item nav-link">
-                        <a href="/projet-php/"><?=isset($_SESSION["nom"]) ? "Bienvenue " . $_SESSION["nom"] : ""; ?> </a>
+                        <a href="projet-php/coordonnee.php"><?=isset($_SESSION["nom"]) ? "Bienvenue " . $_SESSION["nom"] : ""; ?> </a>
                     </li>
                     <li class="navbar-item nav-link">
                         
