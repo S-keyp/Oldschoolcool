@@ -45,15 +45,33 @@
 
 
     <main>
+        <div class="button-board">
+            <form action="" method="post">
+                <input type="submit" name="game_changer" value="Changer de jeu">
+            </form>
+        </div>
+
         <div class="title-div">
             <h2 data-text="DYNAMICTITLE">
                 DYNAMICTITLE
             </h2>
         </div>
 
-        <canvas>
-
-    </canvas>
+        <div class="container-fluid row" id="main-canvas">
+            <div class="container col-12 mx-auto">
+            <?php require('Games/Bg-quizz/bg-quizz.php');?>
+            <?php
+               /*  if(isset($_POST['game_changer'])){
+                    $rand = rand(1,2);
+                    if($rand == 1){
+                        require('Games/Juste-prix/justeprix.php');
+                    } else if ($rand == 2 ){
+                        require('Games/Bg-quizz/bg-quizz.php');
+                    }
+                } */
+            ?>
+            </div>
+        </div id="main-canvas">
 
         <div class="results container-fluid row">
             <div class="col-12 col-md-6 text-end">
@@ -69,6 +87,5 @@
     </footer>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="assets/js/index.js"></script>
 </body>
 </html>
