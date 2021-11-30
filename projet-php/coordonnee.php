@@ -48,7 +48,7 @@
                                 <button class="btn btn-primary" 
                                         data-bs-target="#Modal" 
                                         data-bs-toggle="modal">
-                                    Modifier;
+                                    Modifier
                                 </button>
                                 <?php require('modifier.php'); ?>
                             </tr>
