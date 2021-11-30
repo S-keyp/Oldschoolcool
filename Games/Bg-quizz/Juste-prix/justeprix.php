@@ -17,14 +17,14 @@
         fclose($fileh);
         ?>
         <h1 class="titre">Le Juste Prix !</h1>
-            <form action="testvaleur.php" method="post">
-                <article class="espace_rep">
-                    <p><input type="text" class="champ_rep" name="reponse" placeholder="Ta réponse !">
-                    <input type="hidden" name="coup" value="0">
-                    <button class="validate" type="submit" value="Plus" name="plus">   Valider !  </button></p>
-                </article>
-                <p class="compteur"> Coups: <?php echo ("$coup"); ?> </p>
-            </form>
+        <form action="testvaleur.php" method="post">
+            <article class="espace_rep">
+                <p><input type="text" class="champ_rep" name="reponse" placeholder="Ta réponse !">
+                <input type="hidden" name="coup" value="0">
+                <button class="validate" type="submit" value="Plus" name="plus">   Valider !  </button></p>
+            </article>
+            <p class="compteur"> Coups: <?php echo ("$coup"); ?> </p>
+        </form>
         <style>
             * {
                 background-color: black;
