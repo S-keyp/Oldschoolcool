@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://kit.fontawesome.com/f12c8faf79.js" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>OldSchool Cool</title>   
 </head>
 <body>
@@ -28,7 +28,7 @@
                     <tbody>
                         <?php
                         $id= $_SESSION['id'];
-                        $sql = "SELECT id_utilisateurs, nom, Prénom, email, Date_abo FROM `utilisateurs` WHERE id_utilisateurs = $id;";
+                        $sql = "SELECT id_utilisateurs, nom, Prénom as prenom, pseudo, email, Date_abo FROM `utilisateurs` WHERE id_utilisateurs = $id;";
 
                             $query = $dbh->prepare($sql);
                             $query->execute();
@@ -38,15 +38,14 @@
                             $query->execute();
                          */
                         // On récupère les valeurs dans un tableau associatif
-                            $nom = $query->fetchAll(PDO::FETCH_ASSOC);
-
-                        foreach($nom as $nom){
+                        $utilisateur = $query->fetch(PDO::FETCH_ASSOC);
                         ?>
                             <tr>
-                                <td><?= $nom['nom'] ?></td>
-                                <td><?= $nom['Prénom'] ?></td>
-                                <td><?= $nom['email'] ?></td>
-                                <td><?= $nom['Date_abo'] ?></td>
+                                <td><?= $utilisateur['nom'] ?></td>
+                                <td><?= $utilisateur['prenom'] ?></td>
+                                <td><?= $utilisateur['email'] ?></td>
+                                <td><?= $utilisateur['Date_abo'] ?></td>
+                                <div>
                                 <button class="btn btn-primary" 
                                         data-bs-target="#Modal" 
                                         data-bs-toggle="modal">
@@ -54,11 +53,14 @@
                                 </button>
                                 <?php require('modifier.php'); ?>
                             </tr>
-                        <?php
-                        }
-                        ?>
                     </tbody>
                 </table>
+                <?php
+                if (isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }
+                ?>
             </section>
         </div>
     </main>

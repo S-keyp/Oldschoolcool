@@ -28,6 +28,13 @@
 
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
+                    <?php 
+                    session_start();
+                    if (isset($_SESSION['error'])) {
+                        echo '<li>' . $_SESSION['error'] . '</li>';
+                        unset($_SESSION['error']);
+                    }
+                    ?>
                     <li class="navbar-item nav-link">
                         <a href="inscription.php">Créer un compte</a>
                     </li>
@@ -53,6 +60,7 @@
         </div>
     </header>
 
+    <!--
     <div class="container-fluid">
         <div class="row text-center cover">
             <div class=" col-6" id="container-left"></div>
@@ -60,6 +68,7 @@
             <button class="btn btn-cover" id="open">Let's go</button>
         </div>
     </div>
+-->
 
     <main>
         <div class="title-div">

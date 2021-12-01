@@ -8,7 +8,7 @@
 <body>
 <?php
 require('config.php');
-
+session_start();
 if (isset($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['email'], $_POST['mdp'])){
 
 	$nom= $_POST['nom'];
@@ -24,7 +24,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['email'], $_
 			echo 	"<div class='form-card'>
 					<h3>Vous êtes inscrit avec succès.</h3>
 					<i class='far fa-check-circle' style='color:green; height:450px; width:450px; justify-content:center;'></i>
-					<h4>Cliquez ici pour revenir à <a href='../index.php'> la page prioncipale. </a></h4>
+					<h4>Cliquez ici pour revenir à <a href='../index2.php'> la page principale. </a></h4>
 					</div>";
 	}
 }
