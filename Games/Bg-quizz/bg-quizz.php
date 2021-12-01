@@ -34,13 +34,27 @@ require ('projet-php/config.php');
     $player = $game['player'];
     $round = $game['round'];
     $id = $game['questions'][$player][$round];
+
+    /* CONFIRMATION */
+    $valider=0;
+    if(isset($_POST['confirmation'])){
+        $valider= 1;
+        $rep = $_POST['rep_utilisateur'];
+        $rep_bdd = $_POST['rep_bdd'];
+        if($rep == $rep_bdd){
+            $game['score'][$player] ++ ;// caclculer vraiment le score
+            echo "Bonne réponse";
+        } else {
+            echo "Mauvaise réponse";
+        }
+    }  
+
+    
     echo 'joueur : ' . $player . ' - round : ' . $round .'<br>';
     echo 'question : ' . $id . ' - score : ' . $game['score'][$player];
 
     // On répond à la question
     if(isset($_POST['button1'])) {
-        $game['score'][$player] ++ ;// caclculer vraiment le score
-
         if ($round < ($nb_round - 1)) {
             $game['round'] ++ ;     // On passe au tour suivant
             header('location:#');
@@ -66,7 +80,38 @@ require ('projet-php/config.php');
         }
 
     }
+    
+    
+    $reqs = $dbh -> prepare("SELECT * FROM bgquizz WHERE id= $id");
+    $reqs -> execute();
 
+    foreach($reqs as $question) {
+        echo "<h3>$question[question]</h3>
+        <form action='' method='POST'>
+            <div class='container=fluid row'>
+                <div class='rep-bg-quizz col-6'>
+                    $question[a] <input type='radio' name='rep_utilisateur' value='a' id=''>
+                </div>
+                <div class='rep-bg-quizz col-6'>
+                    <input type='radio' name='rep_utilisateur' value='b' id=''> $question[b] 
+                </div>
+                <div class='rep-bg-quizz col-6'>
+                    $question[c] <input type='radio' name='rep_utilisateur' value='c' id=''>
+                </div>
+                <div class='rep-bg-quizz col-6'>
+                    <input type='radio' name='rep_utilisateur' value='d' id=''> $question[d] 
+                </div>
+                <input type='text' name='rep_bdd' value='$question[rep]'>";
+
+        if($valider == 0){
+            echo "<input type='submit' name='confirmation'value='Confirmer votre réponse?'>";
+        }
+        echo "</div>
+        </form>";
+            
+    }
+
+    
 
     // Sauvegarde de l'état du jeu
     $_SESSION['game'] = $game;
@@ -76,19 +121,6 @@ require ('projet-php/config.php');
         unset($_SESSION['game']);
         header('location:#');
     }
-    
-    
-    
-    $reqs = $dbh -> prepare("SELECT * FROM bgquizz WHERE id= $id");
-    $reqs -> execute();
-
-    foreach($reqs as $question) {
-        echo "<h3>$question[question]</h3> 
-        $question[a]
-        $question[b]
-        $question[c]
-        $question[d]";
-    }
-
-    
 ?>
+
+
