@@ -8,24 +8,24 @@
       <div class="modal-body">
 				<?php
 			require('config.php');
-			session_start();
+
 
 			if (isset($_POST['pseudo'], $_POST['mdp'])){
+				session_start();
 
 				$pseudo= $_POST['pseudo'];
 				$mdp= $_POST['mdp'];
 				$request = $dbh -> prepare("SELECT id_utilisateurs, nom, pseudo, mdp FROM utilisateurs WHERE pseudo= :pseudo and mdp= :mdp");
-				if(!$request -> execute(['pseudo' => $pseudo,
-									'mdp' => $mdp])){
-						print '<h3 class="error">Nom d\'utilisateur ou Mot de passe invalide</h3>';
-					} 
-					else {
-						$row= $request->fetch();
-						$_SESSION['nom'] = $row['nom'];
-						$_SESSION['id'] = $row['id_utilisateurs'];
-						header('location:../index2.php');
-					
-					}
+				$request -> execute(['pseudo' => $pseudo,'mdp' => $mdp]);
+				$row= $request->fetch();
+				if(! $row){
+					$_SESSION['error'] = 'Nom d\'utilisateur ou Mot de passe invalide';
+					header('location:../index.php');
+				} else {
+					$_SESSION['nom'] = $row['nom'];
+					$_SESSION['id'] = $row['id_utilisateurs'];
+					header('location:../index2.php');
+				}
 				
 
 
