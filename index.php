@@ -54,9 +54,6 @@
                             </div>
                         </div>
                     </li>
-                    <!-- <li class="navbar-item nav-link">  DEVRAIT ËTRE AFFICHER SEULEMENT
-                        <a href="#mesCreations">Mes créations</a> SI LE JOUEUR EST CO
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -71,7 +68,6 @@
 
         <div class="container-fluid row" id="main-canvas">
             <div class="container col-12 mx-auto">
-                <?php require('Games/Bg-quizz/bg-quizz.php');?>
             </div>
         </div>
 

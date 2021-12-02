@@ -39,45 +39,45 @@
                     <i class="far fa-user-circle" style="height: 100px; width: 100px;"></i>
                     </li>
                     <li class="navbar-item nav-link">
-                                <button class="btn btn-danger" 
-                                        data-bs-target="#Modal" 
-                                        data-bs-toggle="modal">
-                                    Se déconnecter
-                                    <li class="fas fa-sign-out-alt"></li>
-                                </button>
-                                <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+                        <button class="btn btn-danger" 
+                                data-bs-target="#Modal" 
+                                data-bs-toggle="modal">
+                            Se déconnecter
+                            <li class="fas fa-sign-out-alt"></li>
+                        </button>
+                        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Déconnexion</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Déconnexion</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
 
-                                            <div class="modal-body">
-                                                <p>Voulez-vous vraiment vous déconnecter?</p>
-                                            </div>
+                                    <div class="modal-body">
+                                        <p>Voulez-vous vraiment vous déconnecter?</p>
+                                    </div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                <button type="submit" class="btn btn-primary"><a href="projet-php/logout.php">Confirmer</a></button>
-                                            </div>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary"><a href="projet-php/logout.php">Confirmer</a></button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </header>
 
-    <div class="container-fluid">
+ <!--    <div class="container-fluid">
         <div class="row text-center cover">
             <div class=" col-6" id="container-left"></div>
             <div class=" col-6" id="container-right"></div>
             <button class="btn btn-cover" id="open">Let's go</button>
         </div>
-    </div>
+    </div> -->
 
     <main>
         <div class="title-div">

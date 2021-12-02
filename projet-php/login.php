@@ -24,6 +24,7 @@
 				} else {
 					$_SESSION['nom'] = $row['nom'];
 					$_SESSION['id'] = $row['id_utilisateurs'];
+					$_SESSION['pseudo'] = $row['pseudo'];
 					header('location:../index2.php');
 				}
 				
