@@ -28,6 +28,7 @@
 
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
+                    <li>
                     <?php 
                     session_start();
                     if (isset($_SESSION['error'])) {
@@ -35,6 +36,7 @@
                         unset($_SESSION['error']);
                     }
                     ?>
+                    </li>
                     <li class="navbar-item nav-link">
                         <a href="inscription.php">Créer un compte</a>
                     </li>

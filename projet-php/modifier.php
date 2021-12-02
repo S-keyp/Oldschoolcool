@@ -83,15 +83,14 @@
                 }
                 ?>
                 <form method="post" action="">
-                Votre nom<p><input type="text" placeholder="Votre nom" name="nom" value="<?=$utilisateur['nom']?>"></p>
-                    <p><input type="text" placeholder="Votre prénom" name="prenom" value="<?=$utilisateur['prenom']?>"></p>
-                    <p><input type="email" placeholder="Adresse mail" name="email" value="<?=$utilisateur['email']?>"></p>
-                    <p><input type="pseudo" placeholder="Pseudo" name="pseudo" value="<?=$utilisateur['pseudo']?>"></p>
-                    <p><button type="submit" name="modification">Modifier</button></p>
+                Votre Nom: <p><input type="text" placeholder="Votre nom" name="nom" value="<?=$utilisateur['nom']?>"></p>
+                    Votre Prénom: <p><input type="text" placeholder="Votre prénom" name="prenom" value="<?=$utilisateur['prenom']?>"></p>
+                    Votre email: <p><input type="email" placeholder="Adresse mail" name="email" value="<?=$utilisateur['email']?>"></p>
+                    Votre Pseudo: <p><input type="pseudo" placeholder="Pseudo" name="pseudo" value="<?=$utilisateur['pseudo']?>"></p>
                 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="submit" class="btn btn-primary">Modifier</button>
+        <button type="submit" name="modification" class="btn btn-primary">Modifier</button>
 		</form>
       </div>
     </div>
