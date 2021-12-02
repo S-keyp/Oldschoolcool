@@ -60,33 +60,25 @@
         </div>
     </header>
 
-    <!--
-    <div class="container-fluid">
-        <div class="row text-center cover">
-            <div class=" col-6" id="container-left"></div>
-            <div class=" col-6" id="container-right"></div>
-            <button class="btn btn-cover" id="open">Let's go</button>
-        </div>
-    </div>
--->
-
     <main>
         <div class="title-div">
-            <h2 data-text="DYNAMICTITLE">
-                DYNAMICTITLE
+            <h2 data-text="Burger-Quizz">
+                Burger-Quizz
             </h2>
         </div>
 
-        <canvas>
-
-        </canvas>
+        <div class="container-fluid row" id="main-canvas">
+            <div class="container col-12 mx-auto">
+                <?php require('Games/Bg-quizz/bg-quizz.php');?>
+            </div>
+        </div>
 
         <div class="results container-fluid row">
             <div class="col-12 col-md-6 text-end">
-                <p>Pseudo J1 : <input type="text" name="pseudo-J1">Score J1:<span id="results-J1">03</span></p>
+                <p>Score J1:<span id="results-J1"><?= isset($_SESSION['score-J1'])? $_SESSION['score-J1'] : 0 ?></span></p>
             </div>
             <div class="col-12 col-md-6">
-                <p><span id="results-J2">01</span> : Score J2<input type="text" name="pseudo-J2"> :Pseudo J2</p>
+                <p><span id="results-J2"><?=isset($_SESSION['score-J2'])? $_SESSION['score-J2'] : 0?></span> : Score J2</p>
             </div>
         </div>
     </main>

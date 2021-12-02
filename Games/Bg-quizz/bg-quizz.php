@@ -1,28 +1,35 @@
 <?php
-$nb_questions=4; // Nombre de question disponibles en base
-$nb_round=4; // nombre de round par joueur
-$titre='bgquizz';
+    $nb_questions=4; // Nombre de question disponibles en base
+    $nb_round=4; // nombre de round par joueur
+    
     echo "<form method='post'>
-            <input type='submit' name='button1'
-                    value='Nouvelle question'/>
-            
-            <input type='submit' name='button2'
-                    value='Button2'/>
+            <input type='submit' name='button1' value='Nouvelle question'/>
+            <input type='submit' name='button2' value='Recommencer la partie'/>
         </form>";
 
-require ('projet-php/config.php');
+    require ('projet-php/config.php');
+
+    // Remise à zéro du jeu
+    if(isset($_POST['button2'])) {
+        unset($_SESSION['game']);
+        header('location:index.php');
+    }
 
     if(isset($_SESSION['game'])){
         $game=$_SESSION['game'];
+        $scoreJ2 = $_SESSION['score-J2'];
+        $scoreJ1 = $_SESSION['score-J1'];
     } else {
         // On initialise la partie
         $game = ['player' => 1, 'round' => 0, 'score' => ['1' => 0, '2' => 0] ];
+        $scoreJ1 =0;
+        $scoreJ2 =0;
         // On initialise les 4 questions des 2 joueurs
         for( $i = 1; $i <=2; $i++ ) {
             $ids = [];
             while (count($ids) < $nb_round) {
                 $id = rand(1, $nb_questions);
-                while(in_array($id, $ids) ) {
+                while(in_array($id, $ids)) {
                     $id = rand(1, 4);
                 }
                 $ids[]=$id;
@@ -39,19 +46,17 @@ require ('projet-php/config.php');
     $valider=0;
     if(isset($_POST['confirmation'])){
         $valider= 1;
-        $rep = $_POST['rep_utilisateur'];
+        $rep = $_POST['rep_utilisateur'] ?? "";
         $rep_bdd = $_POST['rep_bdd'];
         if($rep == $rep_bdd){
-            $game['score'][$player] ++ ;// caclculer vraiment le score
-            echo "Bonne réponse";
+            $game['score'][$player] ++ ;
+            echo "<p style='color:green'>Bonne réponse!</p>";
         } else {
-            echo "Mauvaise réponse";
+            echo "<p style='color:red'>Mauvaise réponse!</p>";
         }
     }  
 
-    
-    echo 'joueur : ' . $player . ' - round : ' . $round .'<br>';
-    echo 'question : ' . $id . ' - score : ' . $game['score'][$player];
+    echo 'Joueur : ' . $player . ' - Round : ' . $round . ' - Score : ' . $game['score'][$player];
 
     // On répond à la question
     if(isset($_POST['button1'])) {
@@ -64,21 +69,40 @@ require ('projet-php/config.php');
                 $game['round'] = 0 ;     // round 0 du joueur 2
                 header('location:#');
             } else {
-                if ($game['score'][1] == $game['score'][1] ) {
+                if ($game['score'][1] == $game['score'][2] ) {
                     echo 'match nul';
-                    exit;
-                } elseif($game['score'][1] > $game['score'][1] ) {
-                    echo 'Le joueur 1 a gagné';
-                    exit;
+                    echo "<form method='post'>
+                            <input type='submit' name='button2'value='Nouvelle partie?'/>
+                        </form>";
+                } elseif($game['score'][1] > $game['score'][2] ) {
+                    echo '<br>Le joueur 1 a gagné';
+                    echo "<form method='post'>
+                            <input type='submit' name='button2'value='Nouvelle partie?'/>
+                        </form>";
+                    $scoreJ1++;
+                    /* if($scoreJ1==3){
+                        echo "<h2>Partie terminée, le joueur 1 l'emporte";
+                        $reqs = $dbh -> prepare("INSERT INTO historique (nom_j1, nom_j2, score_j1, score_j2) VALUES (:nom_j1, :nom_j2, :score_j1, :score_j2) WHERE id= $id_utilisateur");
+                        $reqs -> execute('nom_j1'=>$, 'nom_j2'=>'J2', 'score_j1'=>$scoreJ1, 'score_j2'=>$scoreJ2);
+                        exit;
+                    } */
                 } else {
-                    echo 'Le joueur 2 a gagné';
-                    exit;
+                    echo '<br>Le joueur 2 a gagné';
+                    echo "<form method='post'>
+                            <input type='submit' name='button2'value='Nouvelle partie?'/>
+                        </form>";
+                    $scoreJ2++;
+                    /* if($scoreJ2==3){
+                        echo "<h2>Partie terminée, le joueur 2 l'emporte";
+                        $reqs = $dbh -> prepare("INSERT INTO historique (nom_j1, nom_j2, score_j1, score_j2) VALUES (:nom_j1, :nom_j2, :score_j1, :score_j2) WHERE id= $id_utilisateur");
+                        $reqs -> execute('nom_j1'=>$, 'nom_j2'=>'J2', 'score_j1'=>$scoreJ1, 'score_j2'=>$scoreJ2);
+                        exit;
+                    } */
+                    
                 }
-
                 // Fin de partie
             }
         }
-
     }
     
     
@@ -101,26 +125,22 @@ require ('projet-php/config.php');
                 <div class='rep-bg-quizz col-6'>
                     <input type='radio' name='rep_utilisateur' value='d' id=''> $question[d] 
                 </div>
-                <input type='text' name='rep_bdd' value='$question[rep]'>";
+                <input type='hidden' name='rep_bdd' value='$question[rep]'>";
 
         if($valider == 0){
             echo "<input type='submit' name='confirmation'value='Confirmer votre réponse?'>";
         }
         echo "</div>
-        </form>";
-            
+        </form>";      
     }
 
     
 
     // Sauvegarde de l'état du jeu
     $_SESSION['game'] = $game;
-
-    // Remise à zéro du jeu
-    if(isset($_POST['button2'])) {
-        unset($_SESSION['game']);
-        header('location:#');
-    }
+    $_SESSION['score-J2'] = $scoreJ2;
+    $_SESSION['score-J1'] = $scoreJ1;
+    
 ?>
 
 
