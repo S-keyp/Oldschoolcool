@@ -127,16 +127,6 @@ main {
     width: 100vw;
 }
 
-/* BUTTON BOARD */
-.button-board{
-    position: absolute;
-    left: 10px;
-    top:30%;
-    border: 1px solid black;
-    height: 250px;
-    padding: 10px;
-}
-
 /* TITLE */
 .title-div, .results{
     display: flex;
@@ -156,7 +146,7 @@ h2{
 }
 
 h2::before{
-    content: "Burger-Quizz";
+    content: attr(data-text);
     z-index: 1;
     position: absolute;
     left: 0;
@@ -185,29 +175,11 @@ h2::before{
 
 
 /* CANVAS */
-
-#main-canvas .container {
+canvas {
     background-color: #eee;
-    height: 65vh;
-    width: 75vw;
+    height: 65%;
+    width: 75%;
     margin: 0.2rem 0;
-}
-
-#main-canvas .container form:nth-child(1) {
-    margin: 20px 13%;
-}
-
-#main-canvas .container form:nth-child(1) input {
-    margin: 0 13%;
-}
-
-#main-canvas .container h3 {
-    margin: 2.5rem;
-}
-
-.rep-bg-quizz{
-    padding: 20px;
-    margin-bottom: 15px;
 }
 
 /* RESULTS */
@@ -223,7 +195,7 @@ h2::before{
 .results p:not(span) {
     margin: 0;
     padding: 0.3rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .results span{
@@ -233,7 +205,7 @@ h2::before{
     font-family: School;
 }
 
-.results div:nth-child(1) span{
+.results span:nth-child(1){
     color: red;
     -webkit-text-stroke: 1px rgb(255, 255, 255);
 }
