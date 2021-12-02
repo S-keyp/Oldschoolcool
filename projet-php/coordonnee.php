@@ -63,6 +63,19 @@
                 ?>
             </section>
         </div>
+        <?php $reqs = $dbh -> prepare("SELECT nom_j1, nom_j2, score_j1, score_j2 FROM historique Join utilisateurs ON historique.id_Utilisateur=utilisateurs.id_utilisateurs WHERE id_utilisateur = $id ");
+        $reqs -> execute();
+
+            foreach($reqs as $question)
+                echo "<div class='card text-white bg-success mb-3' style='max-width: 18rem;'>
+                    <div class='card-header'>Historique</div>
+                    <div class='card-body'>
+                        <h5 class='card-title'> $question[nom_j1] vs $question[nom_j2]</h5>
+                        <p class='card-text'>Votre score est: $question[score_j1] VS $question[score_j2]</p>
+                    </div>
+                    </div>";
+        ?>
+        
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

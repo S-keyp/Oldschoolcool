@@ -34,9 +34,9 @@
 
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
+                    <li>Bienvenue <?= $_SESSION["nom"] ?>!</li>
                     <li class="navbar-item nav-link">
-                    <a href="projet-php/coordonnee.php"><?=isset($_SESSION["nom"]) ? "Bienvenue " . $_SESSION["nom"] : ""; ?></a>
-                    <i class="far fa-user-circle" style="height: 100px; width: 100px;"></i>
+                    <a href="projet-php/coordonnee.php"><?=isset($_SESSION["nom"]) ? "Mon Profil": ""; ?></a>
                     </li>
                     <li class="navbar-item nav-link">
                         <button class="btn btn-danger" 

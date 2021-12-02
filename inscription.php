@@ -12,6 +12,9 @@
     <title>Document</title>
 </head>
 
+<?php
+    session_start();
+?>
 
 <body>
     <header class="container-fluid">
@@ -73,6 +76,12 @@
 	                <p><input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required /></p>
                     <p><input type="text" class="box-input" name="email" placeholder="Email" required /></p>
                     <p><input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required /></p>
+                    <?php
+                    if (isset($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>
                 </div>
                 <!-- <p>Nom : <input type="text" name="nom"> Prénom : <input type="text" name="prenom"></p>
                 <p>Pseudo : <input type="text" name="pseudo"></p>
