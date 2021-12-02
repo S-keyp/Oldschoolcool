@@ -33,12 +33,12 @@
                     <li class="navbar-item nav-link">Bienvenue <?= $_SESSION["nom"] ?>!</li>
                     <li class="navbar-item nav-link">
                         <button class="btn btn-danger" 
-                                data-bs-target="#Modal" 
+                                data-bs-target="#Modal1" 
                                 data-bs-toggle="modal">
                             Se déconnecter
                             <li class="fas fa-sign-out-alt"></li>
                         </button>
-                        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -53,7 +53,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary"><a href="projet-php/logout.php">Confirmer</a></button>
+                                        <button type="submit" class="btn btn-primary"><a href="../projet-php/logout.php">Confirmer</a></button>
                                     </div>
                                 </div>
                             </div>
