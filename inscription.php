@@ -8,8 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/f12c8faf79.js" crossorigin="anonymous"></script>
-
-    <title>Document</title>
+    <title>Inscritpion</title>
 </head>
 
 <?php
@@ -50,9 +49,6 @@
                             </div>
                         </div>
                     </li>
-                    <!-- <li class="navbar-item nav-link">  DEVRAIT ËTRE AFFICHER SEULEMENT
-                        <a href="#mesCreations">Mes créations</a> SI LE JOUEUR EST CO
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -83,11 +79,6 @@
                     }
                     ?>
                 </div>
-                <!-- <p>Nom : <input type="text" name="nom"> Prénom : <input type="text" name="prenom"></p>
-                <p>Pseudo : <input type="text" name="pseudo"></p>
-                <p>Mail : <input type="text" name="email"></p>
-                <p>Mot de passe : <input type="password" name="mdp"></p>
-                <p>Confirmer le mot de passe : <input type="password" name="mdp"></p> -->
                 <div class="col-12 text-end">
                     <a class="btn btn-primary" href="index.php">Revenir au menu</a>
                     <input class="btn btn-info" type="submit" value="S'inscrire">

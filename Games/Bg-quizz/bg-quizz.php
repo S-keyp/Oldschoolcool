@@ -1,6 +1,6 @@
 <?php
-    $nb_questions=4; // Nombre de question disponibles en base
-    $nb_round=4; // nombre de round par joueur
+    $nb_questions=37; // Nombre de question disponibles en base
+    $nb_round=5; // nombre de round par joueur
 
     require ('projet-php/config.php');
 
@@ -33,7 +33,7 @@
             while (count($ids) < $nb_round) {
                 $id = rand(1, $nb_questions);
                 while(in_array($id, $ids)) {
-                    $id = rand(1, 4);
+                    $id = rand(1, $nb_questions);
                 }
                 $ids[]=$id;
             }

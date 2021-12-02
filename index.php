@@ -68,6 +68,7 @@
 
         <div class="container-fluid row" id="main-canvas">
             <div class="container col-12 mx-auto">
+                <h3 style="margin-top: 180px">Veuillez vous connecter pour commencer le jeu</h3>
             </div>
         </div>
 

@@ -14,6 +14,56 @@
         require('config.php');
         session_start();
     ?>
+    <header class="container-fluid">
+        <div class="navbar navbar-expand-md row">
+            <div class="navbar-brand col-12 col-md-6 text-center">
+                <img src="../assets/img/osc-logo-2.png" alt="Logo" id="logo">
+            </div>
+
+            <button class="navbar-toggler ml-auto custom-toggler col-12" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#myNavbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+            </button>    
+
+            <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
+                <ul class="navbar-nav ">
+                    <li class="navbar-item nav-link">Bienvenue <?= $_SESSION["nom"] ?>!</li>
+                    <li class="navbar-item nav-link">
+                        <button class="btn btn-danger" 
+                                data-bs-target="#Modal" 
+                                data-bs-toggle="modal">
+                            Se déconnecter
+                            <li class="fas fa-sign-out-alt"></li>
+                        </button>
+                        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Déconnexion</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p>Voulez-vous vraiment vous déconnecter?</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary"><a href="projet-php/logout.php">Confirmer</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -30,13 +80,9 @@
                         $id= $_SESSION['id'];
                         $sql = "SELECT id_utilisateurs, nom, Prénom as prenom, pseudo, email, Date_abo FROM `utilisateurs` WHERE id_utilisateurs = $id;";
 
-                            $query = $dbh->prepare($sql);
-                            $query->execute();
+                        $query = $dbh->prepare($sql);
+                        $query->execute();
 
-         /*                    $result = $query->fetch();                        
-                            $query = $dbh->prepare($sql);
-                            $query->execute();
-                         */
                         // On récupère les valeurs dans un tableau associatif
                         $utilisateur = $query->fetch(PDO::FETCH_ASSOC);
                         ?>
@@ -65,51 +111,21 @@
         </div>
         <?php $reqs = $dbh -> prepare("SELECT nom_j1, nom_j2, score_j1, score_j2 FROM historique Join utilisateurs ON historique.id_Utilisateur=utilisateurs.id_utilisateurs WHERE id_utilisateur = $id ");
         $reqs -> execute();
-
+            echo "<div class='container-fluid row-results row'>";
             foreach($reqs as $question)
-                echo "<div class='card text-white bg-success mb-3' style='max-width: 18rem;'>
+                echo "<div class='card text-center text-white bg-info mb-3' style='max-width: 18rem;'>
                     <div class='card-header'>Historique</div>
                     <div class='card-body'>
                         <h5 class='card-title'> $question[nom_j1] vs $question[nom_j2]</h5>
                         <p class='card-text'>Votre score est: $question[score_j1] VS $question[score_j2]</p>
                     </div>
                     </div>";
+            echo "</div>";
         ?>
         
+        <a href="../index2.php">Revenir à la page d'accueil</a>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="assets/js/index.js"></script>
 </html>
-
-<?php /*
-    require('config.php');
-    session_start();
-
-    if (isset($_POST['nom'], $_POST['prenom'], $_POST['pseudo'],$_POST['email'],$_POST['date_abo'])){
-
-        $nom= $_POST['nom'];
-        $prenom= $_POST['prenom'];
-        $pseudo= $_POST['pseudo'];
-        $email= $_POST['email'];
-        $date_abo= $_POST['date_abo'];
-
-        $request = $dbh -> prepare("SELECT nom, prenom, pseudo, email, date_abo 
-                                    FROM utilisateurs 
-                                    WHERE nom = :nom 
-                                    and prenom = :prenom 
-                                    and pseudo = :pseudo 
-                                    and email = :email 
-                                    and date_abo= :date_abo");
-				if(!$request -> execute(['nom' => $nom, 
-                                        'prenom' => $prenom, 
-                                        'pseudo' => $pseudo,
-                                        'email' = $email,
-									    'date_abo' => $date_abo])){
-                                            
-
-                                        }
-
-
-    }*/
-?>

@@ -34,7 +34,7 @@
 
             <div class="navbar navbar-collapse collapse col-12 col-md-6" id="myNavbar">
                 <ul class="navbar-nav ">
-                    <li>Bienvenue <?= $_SESSION["nom"] ?>!</li>
+                    <li class="navbar-item nav-link">Bienvenue <?= $_SESSION["nom"] ?>!</li>
                     <li class="navbar-item nav-link">
                     <a href="projet-php/coordonnee.php"><?=isset($_SESSION["nom"]) ? "Mon Profil": ""; ?></a>
                     </li>
@@ -70,14 +70,6 @@
             </div>
         </div>
     </header>
-
- <!--    <div class="container-fluid">
-        <div class="row text-center cover">
-            <div class=" col-6" id="container-left"></div>
-            <div class=" col-6" id="container-right"></div>
-            <button class="btn btn-cover" id="open">Let's go</button>
-        </div>
-    </div> -->
 
     <main>
         <div class="title-div">
